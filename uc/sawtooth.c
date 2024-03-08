@@ -1,4 +1,4 @@
-#include "attiny102.h"
+#include <avr/io.h>
 
 void main() {
 
@@ -30,15 +30,15 @@ void main() {
   CLKPSR = 0;
 
   // enable serial port
-  UBRR0H = 0;
-  UBRR0L = 51; // 9600 baud w/ 8MHz clock
-  UCSR0B = (1<<RXEN0)|(1<<TXEN0);
-  UCSR0C = (3<<UCSZ00);
+  UBRRH = 0;
+  UBRRL = 51; // 9600 baud w/ 8MHz clock
+  UCSRB = (1<<RXEN)|(1<<TXEN);
+  UCSRC = (3<<UCSZ0);
 
   state = sSync1;
   while (1) {
-    while(!(UCSR0A & (1<<RXC0)));
-    buf = UDR0;
+    while(!(UCSRA & (1<<RXC)));
+    buf = UDR;
     switch(state) {
       case sSync1:
         if (buf == 0xb5) state = sSync2;
@@ -73,15 +73,15 @@ void main() {
       break;
       case sCheckA:
         if (class==13 && id==1) {
-          while ( !( UCSR0A & (1<<UDRE0)) );
-          UDR0 = (unsigned char) qerr_ptr[0];
+          while ( !( UCSRA & (1<<UDRE)) );
+          UDR = (unsigned char) qerr_ptr[0];
         }
         state = sCheckB;
       break;
       case sCheckB:
         if (class==13 && id==1) {
-          while ( !( UCSR0A & (1<<UDRE0)) );
-          UDR0 = (unsigned char) qerr_ptr[1];
+          while ( !( UCSRA & (1<<UDRE)) );
+          UDR = (unsigned char) qerr_ptr[1];
         }
         state = sSync1;
       break;
