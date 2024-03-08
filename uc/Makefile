@@ -1,6 +1,6 @@
 CC=avr-gcc
-CFLAGS=-g -Os -mmcu=avrtiny
-LOPTS=-g -mmcu=avrtiny
+CFLAGS=-g -Os --short-enums -mmcu=attiny102 -B ./atpack/gcc/dev/attiny102 -isystem ./atpack/include
+LOPTS=-g -mmcu=attiny102 -B ./atpack/gcc/dev/attiny102 -isystem ./atpack/include
 CDEPS=attiny102.h
 OBJCOPY=avr-objcopy
 

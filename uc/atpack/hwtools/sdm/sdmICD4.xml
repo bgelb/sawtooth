@@ -1,0 +1,87 @@
+<sdm:sdm xmlns:sdm="http://crownking/sdm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://crownking/sdm ../../schema/sdm/sdm.xsd">
+  <sdm:version sdm:filename="sdmICD4.xml" sdm:major="0" sdm:minor="0" sdm:rev="0"/>
+  <sdm:devicecapabilities>
+    <sdm:device sdm:devicename="ATtiny10" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny102" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny104" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny11" sdm:profile="empty"/>
+    <sdm:device sdm:devicename="ATtiny12" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny13" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny13A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny15" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny1604" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1606" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1607" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1614" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1616" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1617" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1624" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1626" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1627" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny1634" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny167" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny20" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny202" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny204" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny212" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny214" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny2313" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny2313A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny24" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny24A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny25" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny26" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny261" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny261A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny3216" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny3217" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny3224" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny3226" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny3227" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny4" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny40" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny402" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny404" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny406" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny412" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny414" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny416" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny417" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny424" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny426" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny427" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny4313" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny43U" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny44" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny441" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny44A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny45" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny461" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny461A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny48" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny5" sdm:profile="avrnativetinytpi"/>
+    <sdm:device sdm:devicename="ATtiny804" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny806" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny807" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny814" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny816" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny817" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny824" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny826" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny827" sdm:profile="avrnativeavr8x"/>
+    <sdm:device sdm:devicename="ATtiny828" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny84" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny841" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny84A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny85" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny861" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny861A" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny87" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny88" sdm:profile="avrnativetinyocd"/>
+    <sdm:device sdm:devicename="ATtiny9" sdm:profile="avrnativetinytpi"/>
+  </sdm:devicecapabilities>
+  <sdm:profiledef sdm:isstub="true" sdm:profilename="avrnativetinytpi" sdm:profilesupported="no"/>
+  <sdm:profiledef sdm:profilename="empty" sdm:profilesupported="no"/>
+  <sdm:profiledef sdm:isstub="true" sdm:profilename="avrnativetinyocd" sdm:profilesupported="no"/>
+  <sdm:profiledef sdm:isstub="true" sdm:profilename="avrnativeavr8x" sdm:profilesupported="no"/>
+</sdm:sdm>
