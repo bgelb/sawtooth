@@ -7,11 +7,21 @@
 #define CHECKB_CKSUM(X) ckb^=X;
 #define VALID_CKSUM (cka==0x0 && ckb==0x0)
 
+#define SPI_EN PORTB|=0x2
+#define SPI_DIS PORTB&=~(0x2)
+
+#define CLK_RISE PORTA|=0x1
+#define CLK_FALL PORTA&=~(0x1)
+#define DATA1 PORTA|=0x2
+#define DATA0 PORTA&=~(0x2)
+
+#define SEND_BIT(X) if(X) DATA1; else DATA0; CLK_RISE; CLK_FALL;
+
 void main() {
 
   unsigned char buf;
-  unsigned char plen;
-  unsigned char i;
+  uint16_t plen;
+  uint16_t i;
   unsigned char class;
   unsigned char id;
   int16_t qerr;
@@ -41,12 +51,20 @@ void main() {
   UCSRB = (1<<RXEN)|(1<<TXEN);
   UCSRC = (3<<UCSZ0);
 
+  // set up SPI
+  PORTA&=~(0xfc); // CLK, DAT low default
+  PORTB&=~(0x2); // SS is low by default
+  DDRA|=0x3; // PA0 = SCK, PA1 = DATA
+  DDRB|=0x2; // PB1 = SS
+
   state = sSync1;
   while (1) {
     while(!(UCSRA & (1<<RXC)));
     buf = UDR;
     switch(state) {
       case sSync1:
+          while ( !( UCSRA & (1<<UDRE)) );
+          UDR = VALID_CKSUM ? (class<<4|id) : 0xff;
         if (buf == 0xb5) state = sSync2;
       break;
       case sSync2:
@@ -71,9 +89,10 @@ void main() {
       break;
       case sLen2:
         UPDATE_CKSUM(buf)
-        if(buf==0 && plen>0) { i=0; state = sPayload; }
-        else if (buf==0) state = sCheckA;
-        else state = sSync1; // give up if payload > 255 bytes
+        plen += (((uint16_t)buf)<<8);
+        i=0;
+        if(plen>0) state = sPayload;
+        else state = sCheckA;
       break;
       case sPayload:
         UPDATE_CKSUM(buf)
@@ -90,6 +109,14 @@ void main() {
       case sCheckB:
         CHECKB_CKSUM(buf)
         if (class==13 && id==1 && VALID_CKSUM) {
+
+          SPI_EN;
+          for(i=0;i<8;i++) {
+            SEND_BIT(qerr_ptr[0]&0x1);
+          }
+          SPI_DIS;
+          qerr_ptr[0]>>=1;
+
           while ( !( UCSRA & (1<<UDRE)) );
           UDR = (unsigned char) qerr_ptr[0];
         }
