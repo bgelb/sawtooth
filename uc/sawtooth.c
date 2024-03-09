@@ -17,6 +17,8 @@
 
 #define SEND_BIT(X) if(X) DATA1; else DATA0; CLK_RISE; CLK_FALL;
 
+//#define DEBUG_UART_TX 1
+
 void main() {
 
   unsigned char buf;
@@ -48,7 +50,11 @@ void main() {
   // enable serial port
   UBRRH = 0;
   UBRRL = 51; // 9600 baud w/ 8MHz clock
+#ifdef UART_DEBUX_TX
   UCSRB = (1<<RXEN)|(1<<TXEN);
+#else
+  UCSRB = (1<<RXEN);
+#endif
   UCSRC = (3<<UCSZ0);
 
   // set up SPI
@@ -63,8 +69,10 @@ void main() {
     buf = UDR;
     switch(state) {
       case sSync1:
+#ifdef DEBUG_UART_TX
           while ( !( UCSRA & (1<<UDRE)) );
           UDR = VALID_CKSUM ? (class<<4|id) : 0xff;
+#endif
         if (buf == 0xb5) state = sSync2;
       break;
       case sSync2:
@@ -120,9 +128,10 @@ void main() {
           SEND_BIT(qerr_ptr[0]>>1&0x1);
           SEND_BIT(qerr_ptr[0]&0x1);
           SPI_DIS;
-
+#ifdef DEBUG_UART_TX
           while ( !( UCSRA & (1<<UDRE)) );
           UDR = (unsigned char) qerr_ptr[0];
+#endif
         }
         state = sSync1;
       break;
