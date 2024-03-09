@@ -7,8 +7,8 @@
 #define CHECKB_CKSUM(X) ckb^=X;
 #define VALID_CKSUM (cka==0x0 && ckb==0x0)
 
-#define SPI_EN PORTB|=0x2
-#define SPI_DIS PORTB&=~(0x2)
+#define SPI_EN PORTB=0x2
+#define SPI_DIS PORTB=0x0
 
 #define CLK_RISE PORTA|=0x1
 #define CLK_FALL PORTA&=~(0x1)
@@ -52,10 +52,10 @@ void main() {
   UCSRC = (3<<UCSZ0);
 
   // set up SPI
-  PORTA&=~(0xfc); // CLK, DAT low default
-  PORTB&=~(0x2); // SS is low by default
-  DDRA|=0x3; // PA0 = SCK, PA1 = DATA
-  DDRB|=0x2; // PB1 = SS
+  PORTA=0x00; // CLK, DAT low default
+  PORTB=0x00; // SS is low by default
+  DDRA=0x03; // PA0 = SCK, PA1 = DATA
+  DDRB=0x02; // PB1 = SS
 
   state = sSync1;
   while (1) {
@@ -111,11 +111,15 @@ void main() {
         if (class==13 && id==1 && VALID_CKSUM) {
 
           SPI_EN;
-          for(i=0;i<8;i++) {
-            SEND_BIT(qerr_ptr[0]&0x1);
-          }
+          SEND_BIT(qerr_ptr[0]>>7&0x1);
+          SEND_BIT(qerr_ptr[0]>>6&0x1);
+          SEND_BIT(qerr_ptr[0]>>5&0x1);
+          SEND_BIT(qerr_ptr[0]>>4&0x1);
+          SEND_BIT(qerr_ptr[0]>>3&0x1);
+          SEND_BIT(qerr_ptr[0]>>2&0x1);
+          SEND_BIT(qerr_ptr[0]>>1&0x1);
+          SEND_BIT(qerr_ptr[0]&0x1);
           SPI_DIS;
-          qerr_ptr[0]>>=1;
 
           while ( !( UCSRA & (1<<UDRE)) );
           UDR = (unsigned char) qerr_ptr[0];
